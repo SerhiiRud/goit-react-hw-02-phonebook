@@ -1,10 +1,12 @@
-export const Contacts = () => {
+export const ContactList = ({ contactsList }) => {
   return (
-    <form>
-      <label>
-        <input></input>
-      </label>
-      <button type="submit"></button>
-    </form>
+    <ul>
+      {contactsList.map(contact => (
+        <li key={contact.id}>
+          <span>{contact.name}: </span>
+          <span>{contact.number}</span>
+        </li>
+      ))}
+    </ul>
   );
 };
