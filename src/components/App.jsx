@@ -13,20 +13,39 @@ export class App extends Component {
     ],
     filter: '',
   };
-  addContact = contact => {
+
+  addContact = newContact => {
+    if (
+      this.state.contacts.find(
+        contact =>
+          contact.name.toLocaleLowerCase() ===
+          newContact.name.toLocaleLowerCase()
+      )
+    ) {
+      return alert(`${newContact.name} is already in contacts`);
+    }
+
     this.setState(prevState => ({
-      contacts: [...prevState.contacts, contact],
+      contacts: [...prevState.contacts, newContact],
     }));
   };
+
   onInput = event => {
     this.setState({
       filter: event.target.value,
     });
   };
+
   onSearchList = () =>
     [...this.state.contacts].filter(contact =>
       contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
     );
+
+  onDelete = id => {
+    this.setState({
+      contacts: this.state.contacts.filter(contact => contact.id !== id),
+    });
+  };
 
   render() {
     return (
@@ -35,7 +54,10 @@ export class App extends Component {
         <ContactForm onAddContact={this.addContact} />
         <h2>Contacts</h2>
         <Filter onSearch={this.onInput} />
-        <ContactList contactsList={this.onSearchList()} />
+        <ContactList
+          contactsList={this.onSearchList()}
+          onDelete={this.onDelete}
+        />
       </div>
     );
   }
