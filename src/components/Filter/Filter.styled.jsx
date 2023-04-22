@@ -1,8 +1,5 @@
 import styled from '@emotion/styled';
-import {
-  ErrorMessage as FormikErrorMessage,
-  Field as FormikField,
-} from 'formik';
+import { Field as FormikField } from 'formik';
 
 export const Field = styled(FormikField)`
   margin-bottom: 24px;
