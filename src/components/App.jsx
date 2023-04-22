@@ -1,4 +1,6 @@
+import { GlobalStyle } from './GlobalStyle';
 import { Component } from 'react';
+import { Layout } from './Layout/Layout';
 import { ContactForm } from './Phonebook/Phonebook';
 import { ContactList } from './Contacts/Contacts';
 import { Filter } from './Filter/Filter';
@@ -49,7 +51,7 @@ export class App extends Component {
 
   render() {
     return (
-      <div>
+      <Layout>
         <h1>Phonebook</h1>
         <ContactForm onAddContact={this.addContact} />
         <h2>Contacts</h2>
@@ -58,7 +60,8 @@ export class App extends Component {
           contactsList={this.onSearchList()}
           onDelete={this.onDelete}
         />
-      </div>
+        <GlobalStyle />
+      </Layout>
     );
   }
 }
