@@ -21,7 +21,7 @@ const userSchema = object().shape({
     )
     .required('This field is required!'),
   number: string()
-    .min(4)
+    .min(5)
     .max(15)
     .trim()
     .matches(
